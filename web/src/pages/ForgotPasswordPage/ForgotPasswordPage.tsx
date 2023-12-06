@@ -64,8 +64,8 @@ const ForgotPasswordPage = () => {
                     </Label>
                     <TextField
                       name="email"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
+
+                      errorClassName="error"
                       ref={emailRef}
                       validation={{
                         required: {
@@ -75,7 +75,7 @@ const ForgotPasswordPage = () => {
                       }}
                     />
 
-                    <FieldError name="email" className="rw-field-error" />
+                    <FieldError name="email" className="error-message" />
                   </div>
 
                   <div className="rw-button-group">

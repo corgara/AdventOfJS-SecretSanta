@@ -20,7 +20,7 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      navigate(routes.dashboard())
     }
   }, [isAuthenticated])
 
@@ -70,8 +70,8 @@ const SignupPage = () => {
                   </Label>
                   <TextField
                     name="email"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
+
+                    errorClassName="error"
                     ref={emailRef}
                     validation={{
                       required: {
@@ -80,7 +80,7 @@ const SignupPage = () => {
                       },
                     }}
                   />
-                  <FieldError name="email" className="rw-field-error" />
+                  <FieldError name="email" className="error-message" />
 
                   <Label
                     name="password"
@@ -91,8 +91,8 @@ const SignupPage = () => {
                   </Label>
                   <PasswordField
                     name="password"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
+
+                    errorClassName="error"
                     autoComplete="current-password"
                     validation={{
                       required: {
@@ -101,7 +101,7 @@ const SignupPage = () => {
                       },
                     }}
                   />
-                  <FieldError name="password" className="rw-field-error" />
+                  <FieldError name="password" className="error-message" />
 
                   <div className="rw-button-group">
                     <Submit className="rw-button rw-button-blue">

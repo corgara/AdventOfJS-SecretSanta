@@ -280,7 +280,7 @@
   box-shadow: 0 0 5px #c53030;
 }
 
-.rw-field-error {
+.error-message {
   display: block;
   margin-top: 0.25rem;
   font-weight: 600;

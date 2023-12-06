@@ -85,8 +85,8 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
                     <PasswordField
                       name="password"
                       autoComplete="new-password"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
+
+                      errorClassName="error"
                       disabled={!enabled}
                       ref={passwordRef}
                       validation={{
@@ -97,7 +97,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
                       }}
                     />
 
-                    <FieldError name="password" className="rw-field-error" />
+                    <FieldError name="password" className="error-message" />
                   </div>
 
                   <div className="rw-button-group">

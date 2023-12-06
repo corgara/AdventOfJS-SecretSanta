@@ -94,7 +94,8 @@
   }
 
   main {
-    @apply z-10 overflow-scroll relative mb-[350px];
+    @apply z-10 relative mb-[350px];
+    /* @apply z-10 overflow-scroll relative mb-[350px]; */
   }
 
   svg {
@@ -117,6 +118,10 @@
 
   .field {
     @apply mb-4
+  }
+
+  .error-message {
+    @apply text-orangeRed block py-2;
   }
 
   .dropdown {

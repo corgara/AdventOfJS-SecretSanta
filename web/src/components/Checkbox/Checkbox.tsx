@@ -1,10 +1,10 @@
 import { CheckboxField, Label } from '@redwoodjs/forms'
 
-const Checkbox = ({ name }) => {
+const Checkbox = ({ label, name }) => {
   return (
     <div className="field">
       <CheckboxField name={name} />
-      <Label name={name}>Send out a reminder for an event</Label>
+      <Label name={name}>{label}</Label>
     </div>
   )
 }

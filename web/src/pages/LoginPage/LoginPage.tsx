@@ -1,14 +1,7 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
-import {
-  Form,
-  Label,
-  PasswordField,
-  Submit,
-  FieldError,
-  EmailField,
-} from '@redwoodjs/forms'
+import { Form, Label, Submit, FieldError, EmailField } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
@@ -53,14 +46,11 @@ const LoginPage = () => {
       <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
 
-        <Form onSubmit={onSubmit} className="mb=10">
-          <div className="max-w-[660px] mx-auto">
-            <HeaderWithRulers className={"text-white mb-8"} heading={"LOGIN"} />
-            <div className="field relative">
-              <Label
-                name="email"
-                errorClassName="error"
-              >
+        <Form onSubmit={onSubmit} className="auth-form">
+          <div className="mx-auto max-w-[660px]">
+            <HeaderWithRulers className={'mb-8 text-white'} heading={'LOGIN'} />
+            <div className="field">
+              <Label name="email" errorClassName="error">
                 Email
               </Label>
               <EmailField
@@ -98,16 +88,10 @@ const LoginPage = () => {
             </div>
           </div>
         </Form>
-        <div className="text-center text-white">
-          <div className="rw-login-link">
-            <Link to={routes.signup()} className="underline hover:no-underline">
-              Need an Account?
-            </Link>
-            {' ∙ '}
-            <Link to={routes.forgotPassword()} className="underline hover:no-underline">
-              Forgot Password?
-            </Link>
-          </div>
+        <div className="auth-links">
+          <Link to={routes.signup()}>Need an Account?</Link>
+          {' ∙ '}
+          <Link to={routes.forgotPassword()}>Forgot Password?</Link>
         </div>
       </main>
     </>

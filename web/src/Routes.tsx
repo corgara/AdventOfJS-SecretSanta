@@ -16,9 +16,12 @@ const Routes = () => {
   return (
     <Router useAuth={useAuth}>
       <PrivateSet unauthenticated="login">
-        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+        <Set wrap={AuthLayout}>
+          <Route path="/event/new" page={NewEventPage} name="newEvent" />
+          <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+        </Set>
       </PrivateSet>
-      <Set wrap = {AuthLayout}>
+      <Set wrap={AuthLayout}>
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/signup" page={SignupPage} name="signup" />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />

@@ -7,11 +7,13 @@ import {
   Submit,
   FieldError,
 } from '@redwoodjs/forms'
-import { navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
+import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
+import ShowHidePassword from 'src/components/ShowHidePassword/ShowHidePassword'
 
 const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
   const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } =
@@ -20,7 +22,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      navigate(routes.dashboard())
     }
   }, [isAuthenticated])
 
@@ -63,55 +65,35 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
 
       <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
-                Reset Password
-              </h2>
-            </header>
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="password"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      New Password
-                    </Label>
-                    <PasswordField
-                      name="password"
-                      autoComplete="new-password"
+        <Form onSubmit={onSubmit} className="mb=10">
+          <div className="mx-auto max-w-[660px]">
+            <HeaderWithRulers
+              className={'mb-8 text-white'}
+              heading={'RESET PASSWORD'}
+            />
 
-                      errorClassName="error"
-                      disabled={!enabled}
-                      ref={passwordRef}
-                      validation={{
-                        required: {
-                          value: true,
-                          message: 'New Password is required',
-                        },
-                      }}
-                    />
+            <ShowHidePassword
+              label="New Password"
+              name="password"
+              errorClassName="error"
+              autoComplete="new-password"
+              placeholder=""
+              validation={{
+                required: {
+                  value: true,
+                  message: 'Password is required',
+                },
+              }}
+            />
 
-                    <FieldError name="password" className="error-message" />
-                  </div>
-
-                  <div className="rw-button-group">
-                    <Submit
-                      className="rw-button rw-button-blue"
-                      disabled={!enabled}
-                    >
-                      Submit
-                    </Submit>
-                  </div>
-                </Form>
-              </div>
+            <div className="rw-button-group">
+              <Submit>Submit</Submit>
             </div>
           </div>
+        </Form>
+        <div className="auth-links">
+          <Link to={routes.signup()}>Need an Account?</Link>
         </div>
       </main>
     </>

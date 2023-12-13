@@ -39,6 +39,7 @@
   input[type="number"],
   input[type="tel"],
   input[type="email"],
+  input[type="date"],
   input[type="text"] {
     @apply font-sans text-2xl h-[100px] w-full px-7
   }
@@ -67,7 +68,7 @@
   }
 
   input[type="checkbox"] + label {
-    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer
+    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer dark:text-white
   }
 
   input[type="checkbox"] + label:before {
@@ -117,8 +118,21 @@
   }
 
   .field {
-    @apply mb-4
+    @apply mb-4 relative
   }
+
+  .auth-form {
+    @apply mb-10
+  }
+
+  .auth-links{
+    @apply text-center text-white
+  }
+
+  .auth-links a{
+    @apply underline hover:no-underline
+  }
+
 
   .error-message {
     @apply text-orangeRed block py-2;
@@ -135,10 +149,6 @@
 
   .dropdown li {
     @apply flex items-center gap-x-3 font-condensed text-3xl uppercase text-black;
-  }
-
-  .field {
-    @apply relative;
   }
 
   .indicator {

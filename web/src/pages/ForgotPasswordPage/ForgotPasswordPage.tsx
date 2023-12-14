@@ -1,13 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import {
-  Form,
-  Label,
-  TextField,
-  Submit,
-  FieldError,
-  EmailField,
-} from '@redwoodjs/forms'
+import { Form, Label, Submit, FieldError, EmailField } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
@@ -51,8 +44,6 @@ const ForgotPasswordPage = () => {
       <MetaTags title="Forgot Password" />
 
       <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-
         <Form onSubmit={onSubmit} className="auth-form">
           <div className="mx-auto max-w-[660px]">
             <HeaderWithRulers

@@ -2,10 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import {
   Form,
-  Label,
-  PasswordField,
   Submit,
-  FieldError,
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -64,8 +61,6 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
       <MetaTags title="Reset Password" />
 
       <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-
         <Form onSubmit={onSubmit} className="mb=10">
           <div className="mx-auto max-w-[660px]">
             <HeaderWithRulers

@@ -79,7 +79,7 @@
     @apply content-[''] w-10 h-10 block relative -top-1 bg-checked
   }
 
-  button[type="submit"] {
+  button[type="submit"]:not(.round-button) {
     @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5;
   }
 

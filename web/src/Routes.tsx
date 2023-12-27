@@ -11,16 +11,19 @@ import { Router, Route, PrivateSet, Set } from '@redwoodjs/router'
 
 import { useAuth } from './auth'
 import AuthLayout from './layouts/AuthLayout/AuthLayout'
+import InteriorLayout from './layouts/InteriorLayout/InteriorLayout'
 
 const Routes = () => {
   return (
     <Router useAuth={useAuth}>
-      <Route path="/group-invite" page={GroupInvitePage} name="groupInvite" />
       <PrivateSet unauthenticated="login">
         <Set wrap={AuthLayout}>
           <Route path="/event/new" page={NewEventPage} name="newEvent" />
-          <Route path="/dashboard" page={DashboardPage} name="dashboard" />
         </Set>
+        <Set wrap={InteriorLayout}>
+        <Route path="/event/{id:String}" page={GroupInvitePage} name="groupInvite" />
+        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+      </Set>
       </PrivateSet>
       <Set wrap={AuthLayout}>
         <Route path="/login" page={LoginPage} name="login" />

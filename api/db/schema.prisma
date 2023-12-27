@@ -12,8 +12,8 @@ generator client {
 // to create migrations for them and apply to your dev DB.
 
 model User {
-  id                  Int          @id @default(autoincrement())
-  email               String       @unique
+  id                  Int        @id @default(autoincrement())
+  email               String     @unique
   hashedPassword      String
   salt                String
   resetToken          String?
@@ -21,15 +21,15 @@ model User {
   firstName           String?
   lastName            String?
   avatar              String?
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
-  role                Role         @default(USER)
-  status              UserStatus[]
-  santa               Pairing[]    @relation(name: "Pairing_Santa")
-  person              Pairing[]    @relation(name: "Pairing_Person")
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  role                Role       @default(USER)
+  invite              Invite[]
+  santa               Pairing[]  @relation(name: "Pairing_Santa")
+  person              Pairing[]  @relation(name: "Pairing_Person")
   wishlist            WishList[]
-  thankYouAuthor      ThankYou[]   @relation(name: "ThankYou_User")
-  thankYouToUser      ThankYou[]   @relation(name: "ThankYou_ToUser")
+  thankYouAuthor      ThankYou[] @relation(name: "ThankYou_User")
+  thankYouToUser      ThankYou[] @relation(name: "ThankYou_ToUser")
 }
 
 enum Role {
@@ -37,13 +37,15 @@ enum Role {
   USER
 }
 
-model UserStatus {
-  id      Int    @id @default(autoincrement())
-  userId  Int
+model Invite {
+  id      String @id @default(uuid())
+  userId  Int?
   eventId String
-  user    User   @relation(fields: [userId], references: [id])
+  user    User?  @relation(fields: [userId], references: [id])
   event   Event  @relation(fields: [eventId], references: [id])
   status  Status
+  email   String
+  name    String
 }
 
 enum Status {
@@ -53,13 +55,13 @@ enum Status {
 }
 
 model Event {
-  id           String       @id @default(uuid())
+  id           String     @id @default(uuid())
   name         String
   date         DateTime
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
   sendReminder Boolean
-  userStatus   UserStatus[]
+  invite       Invite[]
   Pairing      Pairing[]
   WishList     WishList[]
   ThankYou     ThankYou[]

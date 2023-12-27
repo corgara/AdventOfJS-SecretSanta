@@ -19,6 +19,7 @@
     "@redwoodjs/web": "6.4.1",
     "@storybook/manager-api": "^7.6.1",
     "@storybook/theming": "^7.6.1",
+    "date-fns": "^3.0.0",
     "framer-motion": "^10.16.5",
     "prop-types": "15.8.1",
     "react": "18.2.0",

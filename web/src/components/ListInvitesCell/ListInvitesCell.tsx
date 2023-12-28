@@ -44,7 +44,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ event }: CellSuccessProps<ListInvitesQuery>) => {
   const [deleteInvite] = useMutation(DELETE_INVITATION_MUTATION, {
     onCompleted: () => {
-      toast.success("Invite Deleted")
+      toast.success('Invite Deleted')
     }, onError: (error) => {
       toast.error(error.message)
       console.log(error)

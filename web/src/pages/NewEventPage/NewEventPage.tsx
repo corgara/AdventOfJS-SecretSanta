@@ -1,9 +1,8 @@
 import { navigate, routes } from '@redwoodjs/router'
-import { DateField, Form, Label, Submit, TextField } from '@redwoodjs/forms'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
-import Checkbox from 'src/components/Checkbox/Checkbox'
 import { toast } from '@redwoodjs/web/dist/toast'
+import EventForm from 'src/components/EventForm/EventForm'
 
 const CREATE_EVENT_MUTATION = gql`
   mutation createEventMutation(
@@ -24,9 +23,9 @@ const CREATE_EVENT_MUTATION = gql`
 
 const NewEventPage = () => {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
-    onCompleted: () => {
+    onCompleted: (data) => {
       toast.success("Event Successfully Created")
-      navigate(routes.groupInvite())
+      navigate(routes.groupInvite({id: data.createEvent.id}))
     },
     onError: (error) => {
       console.error({ error })
@@ -52,27 +51,7 @@ const NewEventPage = () => {
           className={'mb-8 text-white'}
           heading={'SET UP YOUR EVENT'}
         />
-        <Form onSubmit={onSubmit} className="auth-form">
-          <fieldset disabled={loading}>
-            <div className="field">
-              <Label name="eventName">Event Name</Label>
-              <TextField name="eventName" placeholder="" />
-            </div>
-            <div className="field">
-              <Label name="eventDate">Event Date</Label>
-              <DateField name="eventDate" placeholder="" />
-            </div>
-            <div className="field">
-              <Checkbox
-                name="sendReminder"
-                label="Send out a reminder for an event"
-              />
-            </div>
-            <div className="rw-button-group">
-              <Submit>Submit</Submit>
-            </div>
-          </fieldset>
-        </Form>
+        <EventForm onSubmit={onSubmit} loading={loading} />
       </div>
     </>
   )

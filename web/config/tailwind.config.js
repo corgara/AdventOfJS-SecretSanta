@@ -31,6 +31,8 @@ module.exports = {
         pastelMagenta: '#ff9dbf' /* pink */,
         padua: '#b1e3cc' /* lightest green - placeholder color */,
         vistaBlue: '#94d1b4' /* light green - placeholder color */,
+        blueZodiac: '#0f2552' /* middle blue */,
+        silverLakeBlue: '##678cbd' /* light blue */,
       },
       height: {
         18: '72px',

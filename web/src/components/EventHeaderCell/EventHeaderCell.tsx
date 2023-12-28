@@ -30,10 +30,13 @@ export const Failure = ({
 
 export const Success = ({
   event,
-}: CellSuccessProps<FindEventHeaderQuery, FindEventHeaderQueryVariables>) => {
+  showEditForm,
+}: CellSuccessProps<FindEventHeaderQuery, FindEventHeaderQueryVariables> & {
+  showEditForm: () => void
+}) => {
   return (
     <>
-      <h3 className="text-4x1 font-handwriting uppercase text-white">
+      <h3 className=" font-handwriting uppercase text-white">
         {prettifyDate(event.date)}
       </h3>
       <div className="flex items-center gap-3">
@@ -41,10 +44,14 @@ export const Success = ({
           {event.name}
         </h1>
       </div>
-      <button className="text-black dark:text-white">
+      <button className="text-black dark:text-white" onClick={showEditForm}>
         <Icon id="edit" />
       </button>
-      <Button size="small" className="bg-supernova text-black">
+      <Button
+        size="small"
+        className="bg-supernova text-black"
+        handleClick={() => {}}
+      >
         Hello
       </Button>
     </>
